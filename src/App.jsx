@@ -1,8 +1,16 @@
 import React from 'react'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import MainLayout from './components/Layout/MainLayout'
 
 function App() {
   return (
-    <div className='bg-red-100 text-xl'>hello world</div>
+    <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<MainLayout/>} >
+
+      </Route>
+    </Routes>
+    </BrowserRouter>
   )
 }
 
