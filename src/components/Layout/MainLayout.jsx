@@ -8,10 +8,10 @@ function MainLayout() {
     <div>
       <Header />
 
-      <div>
-        <Sidebar />
-        <main>
-          <Outlet />
+      <div className="flex flex-row   h-[calc(100vh-4rem)] " >
+        <Sidebar  />
+        <main className="bg-red-200 w-full m-10">
+          <Outlet  />
         </main>
       </div>
     </div>
