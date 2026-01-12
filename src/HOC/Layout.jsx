@@ -1,16 +1,16 @@
 import React from "react";
-import Header from "./Header";
-import Sidebar from "./Sidebar";
+import Header from "../Component/Navigation/Header";
+import Sidebar from "../Component/Navigation/Sidebar";
 import { Outlet } from "react-router-dom";
 
-function MainLayout() {
+function Layout() {
   return (
     <div>
       <Header />
 
       <div className="flex flex-row   h-[calc(100vh-4rem)] " >
         <Sidebar  />
-        <main className="bg-red-200 w-full m-10">
+        <main className=" w-full m-10">
           <Outlet  />
         </main>
       </div>
@@ -18,4 +18,4 @@ function MainLayout() {
   );
 }
 
-export default MainLayout;
+export default Layout;

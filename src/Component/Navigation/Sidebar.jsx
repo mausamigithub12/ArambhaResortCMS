@@ -9,14 +9,12 @@ import { Link } from 'react-router-dom'
 function Sidebar() {
   const data=[
     {
-        icon:<IoMdHome />
-,
+        icon:<IoMdHome />,
         title:"Home",
         link:"/home",
     },
     {
-        icon:<AiOutlineExclamationCircle />
-,
+        icon:<AiOutlineExclamationCircle />,
         title:"About Us",
         link:"/about",
     },
@@ -26,32 +24,27 @@ function Sidebar() {
         link:"/service",
     },
     {
-        icon:<MdOutlineBedroomChild />
- ,
+        icon:<MdOutlineBedroomChild />,
         title:"Rooms",
         link:"/room",
     },
     {
-        icon:<GiPartyPopper />
-,
+        icon:<GiPartyPopper />,
         title:"Events",
         link:"/event",
     },
     {
-        icon:<FaRegImage />
- ,
+        icon:<FaRegImage />,
         title:"Gallery",
         link:"/gallery",
     },
     {
-        icon:<IoIosContact />
-,
+        icon:<IoIosContact />,
         title:"Contact",
         link:"/contact",
     },
     {
-        icon:<BiDetail />
-,
+        icon:<BiDetail />,
         title:"Blogs",
         link:"/blog",
     },
@@ -59,25 +52,27 @@ function Sidebar() {
 
 
   return (
-    <div className='bg-gray-100 border-gray-300 w-72 pt-6 space-y-5  '>
-     {
-        data.map((item,idx)=>(
-        <div
-        key={idx} 
-        >
-        <Link to ={item.link} className=' flex  flex-row gap-2 items-center  text-center  '>
-           <span className='text-xl text-sky-700'>{item.icon}</span>
-          <span className='text-sky-700 font-semibold'> {item.title}</span>
-        </Link>
-        </div> 
+   
+    <div className="w-72 bg-gray-100 border-gray-300 shadow-sm p-4">
+   <div className="space-y-1">
+    {data.map((item, idx) => (
+      <Link
+        key={idx}
+        to={item.link}
+        className="group flex items-center gap-3 px-3 py-2 rounded-xl
+                   hover:bg-slate-900 hover:-translate-y-[1px] transition-all duration-200"
+      >
+        <span className="flex h-9 w-9 items-center justify-center rounded-full bg-sky-100 text-sky-600 group-hover:bg-sky-600 group-hover:text-white transition-colors">
+          {item.icon}
+        </span>
+        <span className="text-sm font-semibold text-sky-800 group-hover:text-white">
+          {item.title}
+        </span>
+      </Link>
+    ))}
+  </div>
+</div>
 
-
-        ))
-     }
-    
-
-
-    </div>
   )
 }
 

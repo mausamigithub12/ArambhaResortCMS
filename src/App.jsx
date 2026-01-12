@@ -1,19 +1,19 @@
 import React from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import MainLayout from './components/Layout/MainLayout'
-import Home from './components/pages/Home'
-import AboutUs from './components/pages/AboutUs'
-import Service from './components/pages/Service'
-import Events from './components/pages/Events'
-import Rooms from './components/pages/Rooms'
-import Gallery from './components/pages/Gallery'
-import Contact from './components/pages/Contact'
+import Home from './Pages/Home'
+import AboutUs from './Pages/AboutUs'
+import Service from './Pages/Service'
+import Events from './Pages/Events'
+import Rooms from './Pages/Rooms'
+import Gallery from './Pages/Gallery'
+import Contact from './Pages/Contact'
+import Layout from './HOC/Layout'
 
 function App() {
   return (
     <BrowserRouter>
     <Routes>
-      <Route path="/" element={<MainLayout/>} >
+      <Route path="/" element={<Layout/>} >
       <Route path="/home" element = {<Home />}/>
       <Route path="/about" element = {<AboutUs />}/>
       <Route path="/service" element = {<Service />}/>
