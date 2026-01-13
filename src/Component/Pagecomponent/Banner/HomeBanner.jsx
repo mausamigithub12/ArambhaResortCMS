@@ -46,7 +46,7 @@ function HomeBanner() {
     <div className="flex  flex-col items-center justify-center">
       <Toaster position="top-right" />
 
-        <h2 className="mb-2 text-xl font-semibold text-slate-800">
+        <h2 className="mb-2 text-xl font-semibold text-red-800">
           Hero Section Content
         </h2>
         <p className="mb-6 text-sm text-slate-500">

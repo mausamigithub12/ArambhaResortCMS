@@ -5,7 +5,7 @@ import { IoCloudUploadSharp } from "react-icons/io5";
 import JoditEditor from "jodit-react";
 import toast, { Toaster } from "react-hot-toast";
 
-const aboutSchema = Yup.object({
+const eventSchema = Yup.object({
   title: Yup.string()
   .min(5,"Title must be 5 character or more")
     .max(80, "Title must be 80 characters or less")
@@ -22,7 +22,7 @@ const aboutSchema = Yup.object({
   image: Yup.mixed().required("Image is required"),
 });
 
-function AboutBanner() {
+function EventBanner() {
   const imageInputRef = useRef(null);
   const editorRef = useRef(null);
 
@@ -42,10 +42,10 @@ function AboutBanner() {
     <div className="flex flex-col items-center justify-center">
       <Toaster position="top-right" />
         <h2 className="mb-2 text-xl font-semibold text-red-800">
-          About Section Content
+          Event Section Content
         </h2>
         <p className="mb-6 text-sm text-slate-500">
-          Manage the title, subtitle,  image shown in your about section.
+          Manage the title, subtitle,  image shown in your event section.
         </p>
 
       <div className="w-full max-w-3xl rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
@@ -56,11 +56,11 @@ function AboutBanner() {
             subtitle: "",
             image: null,
           }}
-          validationSchema={aboutSchema}
+validationSchema={eventSchema}
           onSubmit={(values, { resetForm, setSubmitting }) => {
-            console.log("About form values:", values);
+            console.log(" form values:", values);
 
-            toast.success("About section submit successfully!");
+            toast.success("Your data submit successfully!");
 
             setSubmitting(false);
             resetForm();
@@ -70,7 +70,7 @@ function AboutBanner() {
           {({ setFieldValue, values, isSubmitting }) => (
             <Form className="space-y-6">
               <div>
-                <label className="mb-1 block text-sm font-medium text-red-700">
+                <label className="mb-1 block text-sm font-medium text-slate-700">
                   Title
                 </label>
                 <Field
@@ -95,32 +95,6 @@ function AboutBanner() {
                 <ErrorMessage name="subtitle" component="div" className="mt-1 text-xs text-red-500" />
               </div>
 
-              {/* Description - Jodit Editor */}
-              {/* <div>
-                <label className="mb-1 block text-sm font-medium text-slate-700">
-                  Description
-                </label>
-
-                <JoditEditor
-                  ref={editorRef}
-                  value={values.description}
-                  config={{
-                    height: 300,
-                    readonly: false,
-                    placeholder: "Write hero description...",
-                  }}
-                  onBlur={(newContent) =>
-                    setFieldValue("description", newContent)
-                  }
-                />
-
-                <div className="mt-1 flex justify-between text-[11px] text-slate-400">
-                  <ErrorMessage name="description" component="div" className="text-red-500" />
-                  <span>{values.description.length}/400</span>
-                </div>
-              </div> */}
-
-              {/* Image Upload */}
               <div>
                 <label className="mb-1 block text-sm font-medium text-slate-700">
                   Hero Image
@@ -190,4 +164,4 @@ function AboutBanner() {
   );
 }
 
-export default AboutBanner;
+export default EventBanner;

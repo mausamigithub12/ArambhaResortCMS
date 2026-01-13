@@ -41,11 +41,11 @@ function RoomBanner() {
   return (
     <div className="flex flex-col items-center justify-center">
       <Toaster position="top-right" />
-        <h2 className="mb-2 text-xl font-semibold text-slate-800">
-          Service Section Content
+        <h2 className="mb-2 text-xl font-semibold text-red-800">
+          Room Section Content
         </h2>
         <p className="mb-6 text-sm text-slate-500">
-          Manage the title, subtitle,  image shown in your service section.
+          Manage the title, subtitle,  image shown in your room section.
         </p>
 
       <div className="w-full max-w-3xl rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
