@@ -1,8 +1,12 @@
 import React from 'react'
+import RoomBanner from '../Component/Pagecomponent/Banner/RoomBanner'
 
 function Rooms() {
   return (
-    <div>Rooms</div>
+    <div>
+  <RoomBanner/>
+
+    </div>
   )
 }
 
