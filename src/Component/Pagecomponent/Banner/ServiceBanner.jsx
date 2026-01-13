@@ -5,7 +5,7 @@ import { IoCloudUploadSharp } from "react-icons/io5";
 import JoditEditor from "jodit-react";
 import toast, { Toaster } from "react-hot-toast";
 
-const heroSchema = Yup.object({
+const aboutSchema = Yup.object({
   title: Yup.string()
   .min(5,"Title must be 5 character or more")
     .max(80, "Title must be 80 characters or less")
@@ -17,16 +17,12 @@ const heroSchema = Yup.object({
     .max(120, "Subtitle must be 120 characters or less")
     .required("Subtitle is required"),
 
-  description: Yup.string()
-    .min(10,"Title must be 10 character or more")
-
-    .max(400, "Description must be 400 characters or less")
-    .required("Description is required"),
+  
 
   image: Yup.mixed().required("Image is required"),
 });
 
-function HomeBanner() {
+function ServiceBanner() {
   const imageInputRef = useRef(null);
   const editorRef = useRef(null);
 
@@ -43,29 +39,28 @@ function HomeBanner() {
   };
 
   return (
-    <div className="flex  flex-col items-center justify-center">
+    <div className="flex flex-col items-center justify-center">
       <Toaster position="top-right" />
-
         <h2 className="mb-2 text-xl font-semibold text-slate-800">
-          Hero Section Content
+          Service Section Content
         </h2>
         <p className="mb-6 text-sm text-slate-500">
-          Manage the title, subtitle, description and image shown in your hero section.
+          Manage the title, subtitle,  image shown in your service section.
         </p>
+
       <div className="w-full max-w-3xl rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
 
         <Formik
           initialValues={{
             title: "",
             subtitle: "",
-            description: "",
             image: null,
           }}
-          validationSchema={heroSchema}
+          validationSchema={aboutSchema}
           onSubmit={(values, { resetForm, setSubmitting }) => {
-            console.log("Hero form values:", values);
+            console.log(" form values:", values);
 
-            toast.success("Hero section saved successfully!");
+            toast.success("Your data submit successfully!");
 
             setSubmitting(false);
             resetForm();
@@ -82,7 +77,7 @@ function HomeBanner() {
                   name="title"
                   type="text"
                   placeholder=""
-                  className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm outline-none focus:ring-1  focus:ring-red-500"
+                  className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:ring-1 outline-none focus:ring-red-500"
                 />
                 <ErrorMessage name="title" component="div" className="mt-1 text-xs text-red-500" />
               </div>
@@ -95,37 +90,11 @@ function HomeBanner() {
                   name="subtitle"
                   type="text"
                   placeholder=""
-                  className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm outline-none focus:ring-1  focus:ring-red-500"
+                  className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm outline-none focus:ring-1 focus:ring-red-500"
                 />
                 <ErrorMessage name="subtitle" component="div" className="mt-1 text-xs text-red-500" />
               </div>
 
-              {/* Description - Jodit Editor */}
-              <div>
-                <label className="mb-1 block text-sm font-medium text-slate-700">
-                  Description
-                </label>
-
-                <JoditEditor
-                  ref={editorRef}
-                  value={values.description}
-                  config={{
-                    height: 300,
-                    readonly: false,
-                    placeholder: "Write hero description...",
-                  }}
-                  onBlur={(newContent) =>
-                    setFieldValue("description", newContent)
-                  }
-                />
-
-                <div className="mt-1 flex justify-between text-[11px] text-slate-400">
-                  <ErrorMessage name="description" component="div" className="text-red-500" />
-                  <span>{values.description.length}/400</span>
-                </div>
-              </div>
-
-              {/* Image Upload */}
               <div>
                 <label className="mb-1 block text-sm font-medium text-slate-700">
                   Hero Image
@@ -195,4 +164,4 @@ function HomeBanner() {
   );
 }
 
-export default HomeBanner;
+export default ServiceBanner;

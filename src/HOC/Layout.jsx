@@ -5,12 +5,14 @@ import { Outlet } from "react-router-dom";
 
 function Layout() {
   return (
-    <div>
+    <div className="min-h-screen">
       <Header />
 
-      <div className="flex flex-row   h-[calc(100vh-4rem)] " >
-        <Sidebar  />
-        <main className=" w-full m-10">
+      <div className="flex flex-row   h-[calc(100vh-5rem)]   " >
+         <aside className=" w-72 h-full  ">
+          <Sidebar />
+        </aside>
+        <main className=" w-full  overflow-y-auto no-scrollbar  p-10">
           <Outlet  />
         </main>
       </div>
@@ -19,3 +21,6 @@ function Layout() {
 }
 
 export default Layout;
+
+
+

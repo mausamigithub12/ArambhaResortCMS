@@ -3,7 +3,7 @@ import logo from "../../assets/arambha.jpg"
 import { IoPerson } from 'react-icons/io5'
 function Header() {
   return (
-    <div className='bg-gray-100 border border-gray-200 flex flex-row items-center justify-between px-6 py-2 h-20'>
+    <div className='bg-gray-100 border  top-0 left-0 right-0 z-50 w-full  border-gray-200 flex flex-row items-center justify-between px-6 py-2 h-20'>
      <div className=' flex items-center gap-3 '>
          <img
               src={logo}

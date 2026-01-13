@@ -1,8 +1,11 @@
 import React from 'react'
+import ServiceBanner from '../Component/Pagecomponent/Banner/ServiceBanner'
 
 function Service() {
   return (
-    <div>Service</div>
+    <div>
+      <ServiceBanner/>
+    </div>
   )
 }
 
