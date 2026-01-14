@@ -7,46 +7,36 @@ import toast, { Toaster } from "react-hot-toast";
 
 const heroSchema = Yup.object({
   title: Yup.string()
-  .min(5,"Title must be 5 character or more")
+  .min(3,"Title must be 3 character or more")
     .max(80, "Title must be 80 characters or less")
     .required("Title is required"),
 
-  subtitle: Yup.string()
-    .min(5,"subtitle must be 5 character or more")
+  tag: Yup.string()
+    .min(3,"subtitle must be 3 character or more")
 
     .max(120, "Subtitle must be 120 characters or less")
     .required("Subtitle is required"),
-  heading: Yup.string()
-    .min(3,"heading must be 3 character or more")
 
-    .max(80, "heading must be 80 characters or less")
-    .required("heading is required"),
-
-  description: Yup.string()
+  desc: Yup.string()
     .min(10,"Title must be 10 character or more")
 
     .max(400, "Description must be 400 characters or less")
     .required("Description is required"),
 
-
-     images: Yup.array()
-    .of(Yup.mixed())
-    .min(1, "At least one image is required")
-    .max(3, "Maximum 3 images allowed")
+  img: Yup.mixed().required("Image is required"),
 });
 
-function AboutSection() {
+function AddSpecial() {
   const imageInputRef = useRef(null);
   const editorRef = useRef(null);
 
-  const [imagePreview, setImagePreview] = useState([]);
+  const [imagePreview, setImagePreview] = useState("");
 
   useEffect(() => {
     return () => {
-      imagePreview.forEach((url) => URL.revokeObjectURL(url));
+      if (imagePreview) URL.revokeObjectURL(imagePreview);
     };
   }, [imagePreview]);
-
 
   const handleImageClick = () => {
     imageInputRef.current?.click();
@@ -57,20 +47,19 @@ function AboutSection() {
       <Toaster position="top-right" />
 
         <h2 className="mb-2 text-xl font-semibold text-red-800">
-          About Section Content
+          Hero Section Content
         </h2>
         <p className="mb-6 text-sm text-slate-500">
-          Manage the title, subtitle, heading, description and image shown in your hero section.
+          Manage the title, subtitle, description and image shown in your hero section.
         </p>
       <div className="w-full max-w-3xl rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
 
         <Formik
           initialValues={{
             title: "",
-            subtitle: "",
-            heading:"",
-            description: "",
-            images: [],
+            tag: "",
+            desc: "",
+            img: null,
           }}
           validationSchema={heroSchema}
           onSubmit={(values, { resetForm, setSubmitting }) => {
@@ -103,24 +92,12 @@ function AboutSection() {
                   Subtitle
                 </label>
                 <Field
-                  name="subtitle"
+                  name="tag"
                   type="text"
                   placeholder=""
                   className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm outline-none focus:ring-1  focus:ring-red-500"
                 />
-                <ErrorMessage name="subtitle" component="div" className="mt-1 text-xs text-red-500" />
-              </div>
-              <div>
-                <label className="mb-1 block text-sm font-medium text-slate-700">
-                  Heading
-                </label>
-                <Field
-                  name="heading"
-                  type="text"
-                  placeholder=""
-                  className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm outline-none focus:ring-1  focus:ring-red-500"
-                />
-                <ErrorMessage name="heading" component="div" className="mt-1 text-xs text-red-500" />
+                <ErrorMessage name="tag" component="div" className="mt-1 text-xs text-red-500" />
               </div>
 
               {/* Description - Jodit Editor */}
@@ -138,18 +115,18 @@ function AboutSection() {
                     placeholder: "Write hero description...",
                   }}
                   onBlur={(newContent) =>
-                    setFieldValue("description", newContent)
+                    setFieldValue("desc", newContent)
                   }
                 />
 
                 <div className="mt-1 flex justify-between text-[11px] text-slate-400">
-                  <ErrorMessage name="description" component="div" className="text-red-500" />
-                  <span>{values.description.length}/400</span>
+                  <ErrorMessage name="desc" component="div" className="text-red-500" />
+                  <span>{values.desc.length}/400</span>
                 </div>
               </div>
 
               {/* Image Upload */}
-              {/* <div>
+              <div>
                 <label className="mb-1 block text-sm font-medium text-slate-700">
                   Hero Image
                 </label>
@@ -158,7 +135,7 @@ function AboutSection() {
                   onClick={handleImageClick}
                   className="flex h-48 cursor-pointer items-center justify-center rounded-xl border border-dashed border-slate-300 text-slate-400 transition hover:border-red-400 hover:text-red-400"
                 >
-                  {imagePreview.length>0 ? (
+                  {values.img ? (
                     <img
                       src={imagePreview}
                       alt="Hero preview"
@@ -179,7 +156,7 @@ function AboutSection() {
                   hidden
                   onChange={(e) => {
                     const file = e.target.files?.[0] || null;
-                    setFieldValue("image", file);
+                    setFieldValue("img", file);
 
                     if (file) {
                       setImagePreview(URL.createObjectURL(file));
@@ -189,78 +166,8 @@ function AboutSection() {
                   }}
                 />
 
-                <ErrorMessage name="image" component="div" className="mt-1 text-xs text-red-500" />
-              </div> */}
-
-
-              <div>
-                <label className="mb-1 block text-sm font-medium text-slate-700">
-                  About Images (will rotate)
-                </label>
-
-                <div
-                  onClick={handleImageClick}
-                  className="flex h-48 cursor-pointer items-center justify-center rounded-xl border border-dashed border-slate-300 text-slate-400 transition hover:border-red-400 hover:text-red-400"
-                >
-                  {imagePreview.length > 0 ? (
-                    <div className="flex gap-2 overflow-x-auto w-full h-full p-2">
-                      {imagePreview.map((src, idx) => (
-                        <img
-                          key={idx}
-                          src={src}
-                          alt={`Preview ${idx + 1}`}
-                          className="h-full rounded-lg object-cover"
-                        />
-                      ))}
-                    </div>
-                  ) : (
-                    <div className="flex flex-col items-center gap-2">
-                      <IoCloudUploadSharp className="text-3xl" />
-                      <p className="text-xs">
-                        Click to upload 2-3 images for rotating about section
-                      </p>
-                    </div>
-                  )}
-                </div>
-
-                <input
-                  ref={imageInputRef}
-                  type="file"
-                  accept="image/*"
-                  multiple
-                  hidden
-                  
-
-                    onChange={(e) => {
-    const newFiles = Array.from(e.target.files || []);
-
-    if (newFiles.length === 0) return;
-
-    const updatedFiles = [...values.images, ...newFiles] 
-    setFieldValue("images", updatedFiles);
-
-    imagePreview.forEach((url) => URL.revokeObjectURL(url));
-
-    const urls = updatedFiles.map((file) => URL.createObjectURL(file));
-    setImagePreview(urls);
-
-    e.target.value = "";
-  }}
-/>
-              
-
-                <ErrorMessage
-                  name="images"
-                  component="div"
-                  className="mt-1 text-xs text-red-500"
-                />
-
-                <p className="mt-1 text-[11px] text-slate-400">
-                  Tip: upload 2-3 high quality images of the resort; they will
-                  rotate one by one in the same box.
-                </p>
+                <ErrorMessage name="img" component="div" className="mt-1 text-xs text-red-500" />
               </div>
-
 
               {/* Buttons */}
               <div className="flex gap-3 pt-2 justify-end">
@@ -288,7 +195,4 @@ function AboutSection() {
   );
 }
 
-export default AboutSection;
-
-
-
+export default AddSpecial;

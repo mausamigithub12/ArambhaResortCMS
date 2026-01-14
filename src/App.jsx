@@ -8,6 +8,7 @@ import Rooms from './Pages/Rooms'
 import Gallery from './Pages/Gallery'
 import Contact from './Pages/Contact'
 import Layout from './HOC/Layout'
+import AddSpecial from './Component/Pagecomponent/AboutComponent/ArambhaSpecial/AddSpecial'
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
       <Route path="/room" element = {<Rooms />}/>
       <Route path="/gallery" element = {<Gallery/>}/>
       <Route path="/contact" element = {<Contact/>}/>
+      <Route path="/addspecial" element = {<AddSpecial/>}/>
 
       </Route>
     </Routes>
