@@ -9,7 +9,9 @@ import Gallery from './Pages/Gallery'
 import Contact from './Pages/Contact'
 import Layout from './HOC/Layout'
 import AddSpecial from './Component/Pagecomponent/AboutComponent/ArambhaSpecial/AddSpecial'
-
+import SpecialTable from './Component/Pagecomponent/AboutComponent/ArambhaSpecial/SpecialTable'
+import ViewSpecial from './Component/Pagecomponent/AboutComponent/ArambhaSpecial/ViewSpecial'
+import EditSpecial from './Component/Pagecomponent/AboutComponent/ArambhaSpecial/EditSpecial'
 function App() {
   return (
     <BrowserRouter>
@@ -23,7 +25,9 @@ function App() {
       <Route path="/gallery" element = {<Gallery/>}/>
       <Route path="/contact" element = {<Contact/>}/>
       <Route path="/addspecial" element = {<AddSpecial/>}/>
-
+<Route path="/specialtable" element={<SpecialTable/>}/>
+<Route path="/specialtable/editspecial/:id" element={<EditSpecial/>}/>
+<Route path="/specialtable/viewspecial/:id" element={<ViewSpecial />}/>
       </Route>
     </Routes>
     </BrowserRouter>

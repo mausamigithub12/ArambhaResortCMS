@@ -12,7 +12,7 @@ function Layout() {
          <aside className=" w-72 h-full  ">
           <Sidebar />
         </aside>
-        <main className=" w-full  overflow-y-auto no-scrollbar  p-10">
+        <main className=" w-full  overflow-y-auto   p-10">
           <Outlet  />
         </main>
       </div>

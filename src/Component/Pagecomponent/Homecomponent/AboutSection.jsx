@@ -53,14 +53,14 @@ function AboutSection() {
   };
 
   return (
-    <div className="flex  flex-col items-center justify-center">
+    <div className="flex  flex-col items-center justify-center mt-14">
       <Toaster position="top-right" />
 
         <h2 className="mb-2 text-xl font-semibold text-red-800">
           About Section Content
         </h2>
         <p className="mb-6 text-sm text-slate-500">
-          Manage the title, subtitle, heading, description and image shown in your hero section.
+          Manage the title, subtitle, heading, description and image shown in your about section.
         </p>
       <div className="w-full max-w-3xl rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
 
@@ -195,7 +195,7 @@ function AboutSection() {
 
               <div>
                 <label className="mb-1 block text-sm font-medium text-slate-700">
-                  About Images (will rotate)
+                  About Images 
                 </label>
 
                 <div
