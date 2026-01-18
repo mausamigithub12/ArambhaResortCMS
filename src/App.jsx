@@ -12,6 +12,10 @@ import AddSpecial from './Component/Pagecomponent/AboutComponent/ArambhaSpecial/
 import SpecialTable from './Component/Pagecomponent/AboutComponent/ArambhaSpecial/SpecialTable'
 import ViewSpecial from './Component/Pagecomponent/AboutComponent/ArambhaSpecial/ViewSpecial'
 import EditSpecial from './Component/Pagecomponent/AboutComponent/ArambhaSpecial/EditSpecial'
+import AddHighlight from './Component/Pagecomponent/EventComponrnt/EventHighlight/AddHighlight'
+import HighlightTable from './Component/Pagecomponent/EventComponrnt/EventHighlight/HighlightTable'
+import EditHighlight from './Component/Pagecomponent/EventComponrnt/EventHighlight/EditHighlight'
+import ViewHighlight from './Component/Pagecomponent/EventComponrnt/EventHighlight/ViewHighlight'
 function App() {
   return (
     <BrowserRouter>
@@ -28,6 +32,12 @@ function App() {
 <Route path="/specialtable" element={<SpecialTable/>}/>
 <Route path="/specialtable/editspecial/:id" element={<EditSpecial/>}/>
 <Route path="/specialtable/viewspecial/:id" element={<ViewSpecial />}/>
+<Route path="/addhighlight" element={<AddHighlight />}/>
+<Route path="/highlighttable" element={<HighlightTable />}/>
+<Route path="/highlighttable/view/:id" element={<ViewHighlight />} />
+<Route path="/highlighttable/edit/:id" element={<EditHighlight />} />
+
+
       </Route>
     </Routes>
     </BrowserRouter>

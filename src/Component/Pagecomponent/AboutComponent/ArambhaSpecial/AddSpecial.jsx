@@ -73,23 +73,7 @@ function AddSpecial() {
           },
         }
       );
-      const existingData =
-      JSON.parse(localStorage.getItem("specials")) || [];
-
-    const newItem = {
-      id: response.data.id, 
-      title: values.title,
-      subtitle: values.subtitle,
-      tag: values.tag,
-      description: values.description,
-      image: imagePreview, 
-      createdAt: new Date().toISOString(),
-    };
-
-    localStorage.setItem(
-      "specials",
-      JSON.stringify([...existingData, newItem])
-    );
+   
 
       console.log("data submitted:", response.data);
 

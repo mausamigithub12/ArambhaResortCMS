@@ -5,7 +5,6 @@ const TableActions = ({ onView, onEdit, onDelete }) => {
   const [open, setOpen] = useState(false);
   const menuRef = useRef(null);
 
-  // Close dropdown on click outside
   useEffect(() => {
     if (!open) return;
 

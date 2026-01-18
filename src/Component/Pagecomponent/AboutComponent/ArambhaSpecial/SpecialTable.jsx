@@ -34,12 +34,12 @@ const SpecialTable = () => {
     try {
       await axios.delete(`${API_URL}/${id}`); 
       toast.success("Deleted successfully");
-      setData((prev) => prev.filter((item) => item.id !== id));
+      setData((data) => data.filter((item) => item.id !== id));
     } catch (error) {
       console.error(error);
       toast.error("Delete failed");
     }
-  };
+  }; 
 
   if (loading) {
     return <p className="p-6">Loading...</p>;
